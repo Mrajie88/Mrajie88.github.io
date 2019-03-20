@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Author Name,name@example.com"><title>Python数据处理踩坑总结（一） · worldzhang | 个人博客</title><meta name="description" content="最近正在搞毕业设计的论文。论文是关于时间序列时间数据相似性。所以想趁着这段时间多多总结学习，尝试着写些相关方面的博客。输出型学习不仅能有利于消化学习成果，更是能够有助于论文的推进。好了，废话不多说。进入正题。今天主要来讲讲Python进行数据预处理的“坑”
+
+
+Python的赋值机制
+ex1:a=b"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">worldzhang | 个人博客</a></h3><div class="description"><p>hey,I'm worldz.Welcome to contact me about any questions.</p></div></div></div><ul class="social-links"><li><a href="http://github.com/Mrajie88"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Python数据处理踩坑总结（一）</a></h3></div><div class="post-content"><p>最近正在搞毕业设计的论文。论文是关于时间序列时间数据相似性。所以想趁着这段时间多多总结学习，尝试着写些相关方面的博客。输出型学习不仅能有利于消化学习成果，更是能够有助于论文的推进。<br>好了，废话不多说。进入正题。今天主要来讲讲Python进行数据预处理的“坑”</p>
+<blockquote>
+<ol>
+<li>Python的赋值机制<blockquote>
+<p>ex1:a=b b.append[] print(a)<br>ex2: 函数<br>ex3: <strong>b = list(a)</strong></p>
+</blockquote>
+</li>
+<li>不熟悉numpy、pandas<blockquote>
+<p>numpy和pandas两个框架是Python数据处理时必须要掌握的框架。如果对这两大框架不熟悉，经常会造成问题。我这里简单列举下需要掌握的相关知识点。<br>numpy:对数组操作<br>pandas:数据框的基本操作例如：遍历、处理缺失值</p>
+<blockquote>
+<p>tips: 在数据预处理过程中，我们经常需要需要处理缺失值或异常值。在遍历过程中，不要直接删除缺失值或异常值。因为那样会导致数据框行数改变，导致下标越界。</p>
+</blockquote>
+</blockquote>
+</li>
+<li>理解tuple,list,dic,numpy.ndarray,pandas.Series,DataFrame,以及之间关系。<blockquote>
+<p>（1）tuple是一种固定长度、不可变的Python的对象序列。</p>
+<blockquote>
+<p>1.创建的最简单的办法就是用“，”将序列值分开。<br>2.其次我们可以tuple（）函数对任意序列或迭代器转换成元组。<br><strong>ex：tup = tuple(“String”)<br> tup<br>out:(‘S’, ‘t’, ‘r’, ‘i’, ‘n’, ‘g’)</strong></p>
+<ol start="3">
+<li>tuple 元素的选择通过[]来进行<br><strong>ex: tup[0]<br>out: ‘S’</strong></li>
+<li>我们需要记住很重要的一点。元组虽然各个位置对象不可更改，但是元组内部的对象如果可变，是可以对其进行修改。例如，我们可以修改元组当中的列表对象。<br><strong>ex:tup = ‘String’,[1,2,3],True<br>tup[1].append(1)<br>out:(‘String’, [1, 2, 3, 1], True)</strong></li>
+<li>元组具有自动拆包功能。可以直接交换变量值。<br><strong>ex:tup = ‘String’,(1,2,3),True<br>a,(c,d,e),f = tup<br>c<br>out:1</strong></li>
+<li>元组方法。其中最常用的方法为.count()。用来计算元素在元组中出现次数。<br>(2)list列表是一种长度可变，内容允许修改的对象序列。</li>
+<li>可以使用[]和list()函数。我们可以将list函数将迭代器和生成器转化为列表。</li>
+<li>list对象增加和移除对象。增：append() insert() 删除pop() remove()<br><strong>EX：append() 将元素插到列表尾部。<br>a = [1,2,3]<br>a.append(4)<br>a<br>out: [1, 2, 3, 4]<br>insert(index,element)方法 将元素查到指定位置。<br>a.insert(2,5)<br>a<br>out:[1, 2, 5, 3, 4]<br>pop(index)方法为insert()方法的反操作<br>a.pop(2)<br>a<br>out:[1, 2, 3, 4]<br>remove(element) 移除第一个符合该值<br>a.remove(4)<br>a<br>out:[1, 2, 3]</strong></li>
+<li>可以使用in关键字检查元素是否在列表中。 EX:”sth” in a。检查列表相比较字典和集合来说十分缓慢。列表是线性结构，然而在扫描字典和集合时首先扫描哈希表。</li>
+<li>列表连接可以使用：1.[]+[] 2.[].extend([]).通过添加内容来连接链表是相对高代价操作方法。因为在这个过程中，我们通常需要创建新的列表和复制对象。</li>
+<li>[].sort()函数。对列表内部进行排序。</li>
+<li>列表的切片。[start:end],Python其中切片索引均是包括起始位置，不包括终止位置。因此元素数量为end-start。负索引可以从序列尾部进行索引。tips：需要对列表或者元组进行翻转时，seq[::-1]。<br><strong>其中，我们将正索引和负索引以此列出。正索引：0，1，2，3，4，5/负索引：-6，-5，-4，-3，-2，-1</strong></li>
+<li>enumerate() 遍历序列时进行元素追踪<br><strong>EX:我们对数据建立索引 形成字典<br>a = [“hello”,”world”]<br>mapping = {}<br>for i,value in enumerate(a):<br>mapping[value] = i<br>mapping<br>out:{‘hello’: 0, ‘world’: 1}</strong><br>(3)字典是在Python内建数据结构中占有重要位置，采用Hash结构,键值对。</li>
+<li>创建方法:1.{} 2.dict() dict()函数能接受2-元组进行字典构建<br><strong>mapping = dict(zip(range(5),reversed(range(5))))<br>mapping<br>out:{0: 4, 1: 3, 2: 2, 3: 1, 4: 0}</strong></li>
+<li>增加元素和删除元素。增：a = {} a[key] =value 删：del关键字 del a[key]或者pop()方法。pop()方法会返回删除值并且删除键值。<br><strong>EX:words = [‘apple’,’abandon’,’bat’,’cat’]<br>by_letter = {}<br>for word in words:<br>letter = word[0]<br>if letter not in by_letter:<br>  by_letter[letter] = [word]<br>else:<br>  by_letter[letter].append(word)<br>by_letter<br>out:{‘a’: [‘apple’, ‘abandon’], ‘b’: [‘bat’], ‘c’: [‘cat’]}</strong></li>
+<li>keys()和values()分别对字典的数据类型的键和值得迭代器。</li>
+<li>尽管dict的值是可以修改的，但是字典的key的数据类型是不允许修改的，例如标量类型、元组（且内部不含列表）<br>(4)集合是一种无序且元素唯一的容器。类似只有键没有值的容器。</li>
+<li>创建方法有两种：1.set() 2.a ={1，2，3，4}</li>
+<li>集合和数学上集合的概念相似。同时，集合支持计算交并集。<br><strong><em>EX:a = {1,2,3,4,5}<br>b = {3,4,5,6,7}<br>print(a.union(b))<br>print(a|b)<br>print(a.intersection(b))<br>print(a&amp;b)<br>out:{1, 2, 3, 4, 5, 6, 7}<br>{1, 2, 3, 4, 5, 6, 7}<br>{3, 4, 5}<br>{3, 4, 5}</em></strong></li>
+<li>集合相关操作函数：<br>a.add(x)       将元素x加入集合a<br>a.remove(x)    将元素x从集合a中删除<br>a.issubset(b)  检查a集合是否是b集合的子集<br>（5）Numpy数组</li>
+<li>Numpy的核心特征之一就是N-维的数组对象ndarray。ndarray是一个快速、灵活的大型数据集容器。在上面处理向量数据方法类似于处理标量数据。</li>
+<li>ndarray是一个多维同类数据的容器。shape属性表示数组的维度，dtype是元素数据类型。<br><strong>EX:<br>data = np.random.randn(2,3)<br>data.shape<br>out:(2, 3)</strong></li>
+<li>创建方法：array()函数 np.array([])<br>(6)pandas.DataFrame</li>
+<li>表示矩阵的数据表。</li>
+</ol>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+</blockquote>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2019-03-02</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://worldzhang.cn/2019/03/02/Python数据处理踩坑总结（一）/,worldzhang | 个人博客,Python数据处理踩坑总结（一）,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2019/02/02/helloworld/" title="This is the start.">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
