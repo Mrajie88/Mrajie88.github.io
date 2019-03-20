@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Author Name,name@example.com"><title>newpage · worldzhang | 个人博客</title><meta name="description" content="（转）一、爬虫是什么？如果我们把互联网比作一张大的蜘蛛网，数据便是存放于蜘蛛网的各个节点，而爬虫就是一只小蜘蛛，
+沿着网络抓取自己的猎物（数据）爬虫指的是：向网站发起请求，获取资源后分析并提取有用数据的程序；
+从技术层面来说就是 通过程序模拟浏览器请求站点的行为，把站点返回的HTML代码/JSON数"><meta name="keywords" content="Hexo,HTML,CSS,android,Linux"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">worldzhang | 个人博客</a></h3><div class="description"><p>hey,I'm worldz.Welcome to contact me about any questions.</p></div></div></div><ul class="social-links"><li><a href="http://github.com/Mrajie88"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>newpage</a></h3></div><div class="post-content"><p>（转）<br>一、爬虫是什么？<br>如果我们把互联网比作一张大的蜘蛛网，数据便是存放于蜘蛛网的各个节点，而爬虫就是一只小蜘蛛，</p>
+<p>沿着网络抓取自己的猎物（数据）爬虫指的是：向网站发起请求，获取资源后分析并提取有用数据的程序；</p>
+<p>从技术层面来说就是 通过程序模拟浏览器请求站点的行为，把站点返回的HTML代码/JSON数据/二进制数据（图片、视频） 爬到本地，进而提取自己需要的数据，存放起来使用；</p>
+<p>二、爬虫的基本流程：</p>
+<p>用户获取网络数据的方式：</p>
+<p>方式1：浏览器提交请求—&gt;下载网页代码—&gt;解析成页面</p>
+<p>方式2：模拟浏览器发送请求(获取网页代码)-&gt;提取有用的数据-&gt;存放于数据库或文件中</p>
+<p>爬虫要做的就是方式2；</p>
+<p>1、发起请求</p>
+<p>使用http库向目标站点发起请求，即发送一个Request</p>
+<p>Request包含：请求头、请求体等 </p>
+<p>Request模块缺陷：不能执行JS 和CSS 代码</p>
+<p>2、获取响应内容</p>
+<p>如果服务器能正常响应，则会得到一个Response</p>
+<p>Response包含：html，json，图片，视频等</p>
+<p>3、解析内容</p>
+<p>解析html数据：正则表达式（RE模块），第三方解析库如Beautifulsoup，pyquery等</p>
+<p>解析json数据：json模块</p>
+<p>解析二进制数据:以wb的方式写入文件</p>
+<p>4、保存数据</p>
+<p>数据库（MySQL，Mongdb、Redis）</p>
+<p>文件</p>
+<p>三、http协议 请求与响应</p>
+<p>Request：用户将自己的信息通过浏览器（socket client）发送给服务器（socket server）</p>
+<p>Response：服务器接收请求，分析用户发来的请求信息，然后返回数据（返回的数据中可能包含其他链接，如：图片，js，css等）</p>
+<p>ps：浏览器在接收Response后，会解析其内容来显示给用户，而爬虫程序在模拟浏览器发送请求然后接收Response后，是要提取其中的有用数据。</p>
+<p>四、 request<br>1、请求方式：</p>
+<p>常见的请求方式：GET / POST</p>
+<p>2、请求的URL</p>
+<p>url全球统一资源定位符，用来定义互联网上一个唯一的资源 例如：一张图片、一个文件、一段视频都可以用url唯一确定</p>
+<p>网页的加载过程是：</p>
+<p>加载一个网页，通常都是先加载document文档，</p>
+<p>在解析document文档的时候，遇到链接，则针对超链接发起下载图片的请求</p>
+<p>3、请求头</p>
+<p>User-agent：请求头中如果没有user-agent客户端配置，服务端可能将你当做一个非法用户host；</p>
+<p>cookies：cookie用来保存登录信息</p>
+<p>注意： 一般做爬虫都会加上请求头</p>
+<p>请求头需要注意的参数：</p>
+<p>（1）Referrer：访问源至哪里来（一些大型网站，会通过Referrer 做防盗链策略；所有爬虫也要注意模拟）</p>
+<p>（2）User-Agent:访问的浏览器（要加上否则会被当成爬虫程序）</p>
+<p>（3）cookie：请求头注意携带</p>
+<p>4、请求体</p>
+<p>请求体<br>    如果是get方式，请求体没有内容 （get请求的请求体放在 url后面参数中，直接能看到）<br>    如果是post方式，请求体是format data</p>
+<pre><code>ps：
+1、登录窗口，文件上传等，信息都会被附加到请求体内
+2、登录，输入错误的用户名密码，然后提交，就可以看到post，正确登录后页面通常会跳转，无法捕捉到post
+</code></pre><p>五、 响应Response<br>1、响应状态码</p>
+<p>　　200：代表成功</p>
+<p>　　301：代表跳转</p>
+<p>　　404：文件不存在</p>
+<p>　　403：无权限访问</p>
+<p>　　502：服务器错误</p>
+<p>2、respone header</p>
+<p>响应头需要注意的参数：</p>
+<p>（1）Set-Cookie:BDSVRTM=0; path=/：可能有多个，是来告诉浏览器，把cookie保存下来</p>
+<p>（2）Content-Location：服务端响应头中包含Location返回浏览器之后，浏览器就会重新访问另一个页面</p>
+<p>3、preview就是网页源代码</p>
+<p>JSO数据</p>
+<p>如网页html，图片</p>
+<p>二进制数据等 </p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2019-02-20</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://worldzhang.cn/2019/02/20/Python爬虫/,worldzhang | 个人博客,newpage,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2019/03/02/Python数据处理踩坑总结（一）/" title="Python数据处理踩坑总结（一）">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2019/02/02/helloworld/" title="This is the start.">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
