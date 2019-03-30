@@ -25,8 +25,8 @@ data.drop_duplicates([&apos;k1&apos;,&apos;k2&apos;])
 <pre><code>#统计箱数
 pd.values_counts(cats)
 cats = pd.qcut(data,4) 
-</code></pre><ul>
-<li>检测和过滤异常值</li>
-<li>计算指标/虚拟变量</li>
-</ul>
+</code></pre><p>检测和过滤异常值<br>    data = pd.DataFrame(np.random.randn(1000,4))<br>    data.describe()</p>
+<pre><code>#将数据框绝对值大于3的数据限制在-3到3
+data[((np.abs(data)&gt;3).any(1))] = np.sign(data) * 3
+</code></pre><p>计算指标/虚拟变量 data.get_dummies(data[“key”])</p>
 </div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2019-03-30</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://worldzhang.cn/2019/03/30/Python数据预处理/,worldzhang | 个人博客,Python数据预处理边学边记,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2019/03/02/Python数据处理踩坑总结（一）/" title="Python数据处理踩坑总结（一）">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
