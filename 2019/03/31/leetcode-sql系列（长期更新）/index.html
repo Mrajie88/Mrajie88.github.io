@@ -31,4 +31,12 @@ from courses
 group by class
 having count(distinct student)&gt;=5
 </code></pre><p>tips:考察聚合函数和去重关键字的联合使用。</p>
+<h2 id="620-有趣的电影"><a href="#620-有趣的电影" class="headerlink" title="620.有趣的电影"></a>620.有趣的电影</h2><pre><code>select *
+from cinema
+where description != &quot;boring&quot; and (id%2)!=0
+order by rating desc
+</code></pre><p>tips:sql中取模方法有两种：1.使用取模符号% 2.MOD(id,2)方法。</p>
+<h2 id="627-交换工资"><a href="#627-交换工资" class="headerlink" title="627.交换工资"></a>627.交换工资</h2><pre><code>update salary 
+set sex = if(sex=&quot;f&quot;,&quot;m&quot;,&quot;f&quot;)
+</code></pre><p>tips：SQL语言中支持if语句。if（表达式，真值情况，假值情况）。另外，注意update语句语法。update 表名 set 列名 = 值 where 列名= 值</p>
 </div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2019-03-31</span><i class="fa fa-tag"></i></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://worldzhang.cn/2019/03/31/leetcode-sql系列（长期更新）/,worldzhang | 个人博客,leetcode_sql系列（长期更新）,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2019/03/30/Python数据预处理/" title="Python数据预处理边学边记">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
